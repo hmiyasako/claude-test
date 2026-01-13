@@ -726,13 +726,13 @@ serviceCards.forEach(card => {
         const details = serviceDetails[serviceName];
 
         if (details) {
-            showModal(details);
+            showModal(details, serviceName);
         }
     });
 });
 
 // Show modal with service details
-function showModal(details) {
+function showModal(details, serviceName) {
     const modalIcon = modal.querySelector('.modal-icon');
     const modalTitle = modal.querySelector('.modal-title');
     const modalFullName = modal.querySelector('.modal-full-name');
@@ -745,7 +745,7 @@ function showModal(details) {
 
     // Update content
     modalIcon.textContent = details.icon;
-    modalTitle.textContent = details.fullName.split(' ').pop();
+    modalTitle.textContent = serviceName;
     modalFullName.textContent = details.fullName;
     modalDescription.textContent = details.description;
 
@@ -788,7 +788,7 @@ function showModal(details) {
         tag.textContent = relatedService;
         tag.addEventListener('click', () => {
             if (serviceDetails[relatedService]) {
-                showModal(serviceDetails[relatedService]);
+                showModal(serviceDetails[relatedService], relatedService);
             }
         });
         modalRelated.appendChild(tag);
