@@ -328,3 +328,264 @@ footer {
     40% { content: '..'; }
     60%, 100% { content: '...'; }
 }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+    animation: modalSlideIn 0.4s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 2rem;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(255, 0, 0, 0.1);
+    color: #dd344c;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 40px 30px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, #FF9900, #C925D1);
+    color: white;
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.modal-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-full-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.modal-description {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.modal-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #FF9900;
+}
+
+.modal-section h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.modal-features,
+.modal-use-cases {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-features li,
+.modal-use-cases li {
+    padding: 10px 0;
+    padding-left: 25px;
+    color: #555;
+    line-height: 1.6;
+    position: relative;
+}
+
+.modal-features li::before,
+.modal-use-cases li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #FF9900;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.modal-pricing {
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.modal-related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.related-tag {
+    background: linear-gradient(135deg, #FF9900, #FFB84D);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.related-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+
+/* Cursor pointer for clickable cards */
+.service-card {
+    cursor: pointer;
+}
+
+/* Mobile Responsive for Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        border-radius: 16px;
+    }
+
+    .modal-header {
+        padding: 30px 20px 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .modal-icon {
+        font-size: 3rem;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-full-name {
+        font-size: 1.3rem;
+    }
+
+    .modal-section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .modal-section h4 {
+        font-size: 1.1rem;
+    }
+
+    .modal-close {
+        width: 36px;
+        height: 36px;
+        font-size: 1.8rem;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .modal-header {
+        border-radius: 0;
+    }
+}
