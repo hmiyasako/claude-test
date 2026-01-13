@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マインスイーパー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>マインスイーパー</h1>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">地雷数:</span>
+                <span id="mine-count" class="value">10</span>
+            </div>
+            <div class="info-item">
+                <span class="label">残りフラグ:</span>
+                <span id="flag-count" class="value">10</span>
+            </div>
+            <div class="info-item">
+                <span class="label">時間:</span>
+                <span id="timer" class="value">0</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <label for="difficulty">難易度:</label>
+            <select id="difficulty">
+                <option value="easy">初級 (9x9, 10個)</option>
+                <option value="medium">中級 (16x16, 40個)</option>
+                <option value="hard">上級 (16x30, 99個)</option>
+            </select>
+            <button id="new-game" class="btn">新しいゲーム</button>
+        </div>
+
+        <div id="game-status" class="game-status"></div>
+
+        <div id="game-board" class="game-board"></div>
+
+        <div class="instructions">
+            <h3>遊び方</h3>
+            <ul>
+                <li><strong>左クリック:</strong> セルを開く</li>
+                <li><strong>右クリック:</strong> フラグを立てる/外す</li>
+                <li><strong>目的:</strong> 地雷以外のすべてのセルを開く</li>
+                <li>数字は周囲8マスの地雷の数を表します</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
