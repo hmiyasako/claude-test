@@ -3,398 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS主要サービス ビジュアルガイド</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Web Apps Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #667eea;
+            font-size: 1.8em;
+        }
+
+        .card p {
+            text-align: center;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .card.aws {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .card.minesweeper {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+
+        footer {
+            text-align: center;
+            color: #999;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>🚀 AWS主要サービス ビジュアルガイド</h1>
-            <p class="subtitle">Amazon Web Servicesの主要サービスをカテゴリー別に理解する</p>
+    <div class="container">
+        <h1>Web Apps Collection</h1>
+        <p class="subtitle">ブラウザで動作するWebアプリケーション集</p>
+
+        <div class="cards">
+            <a href="./aws-guide/" class="card aws">
+                <div class="card-icon">☁️</div>
+                <h2>AWS Services Guide</h2>
+                <p>AWSの主要サービスを視覚的に学べるインタラクティブガイド。各サービスの概要、ユースケース、価格情報を確認できます。</p>
+            </a>
+
+            <a href="./minesweeper/" class="card minesweeper">
+                <div class="card-icon">💣</div>
+                <h2>Minesweeper</h2>
+                <p>クラシックなマインスイーパーゲーム。3つの難易度から選択でき、タイマー機能とフラグ機能を備えています。</p>
+            </a>
         </div>
-    </header>
 
-    <nav class="filter-nav">
-        <div class="container">
-            <button class="filter-btn active" data-category="all">すべて</button>
-            <button class="filter-btn" data-category="compute">コンピューティング</button>
-            <button class="filter-btn" data-category="storage">ストレージ</button>
-            <button class="filter-btn" data-category="database">データベース</button>
-            <button class="filter-btn" data-category="networking">ネットワーク</button>
-            <button class="filter-btn" data-category="security">セキュリティ</button>
-            <button class="filter-btn" data-category="analytics">分析</button>
-            <button class="filter-btn" data-category="developer">開発者ツール</button>
-        </div>
-    </nav>
-
-    <main class="container">
-        <div class="services-grid" id="servicesGrid">
-            <!-- Compute Services -->
-            <div class="service-card" data-category="compute">
-                <div class="card-header compute">
-                    <div class="icon">☁️</div>
-                    <h3>EC2</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Elastic Compute Cloud</h4>
-                    <p>仮想サーバーをクラウド上で起動・管理できるサービス。スケーラブルなコンピューティング能力を提供します。</p>
-                    <div class="tags">
-                        <span class="tag">仮想サーバー</span>
-                        <span class="tag">スケーラブル</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="compute">
-                <div class="card-header compute">
-                    <div class="icon">⚡</div>
-                    <h3>Lambda</h3>
-                </div>
-                <div class="card-body">
-                    <h4>AWS Lambda</h4>
-                    <p>サーバーレスコンピューティングサービス。サーバー管理なしでコードを実行できます。イベント駆動型の処理に最適。</p>
-                    <div class="tags">
-                        <span class="tag">サーバーレス</span>
-                        <span class="tag">イベント駆動</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="compute">
-                <div class="card-header compute">
-                    <div class="icon">📦</div>
-                    <h3>ECS</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Elastic Container Service</h4>
-                    <p>Dockerコンテナを簡単にデプロイ、管理、スケーリングできるコンテナオーケストレーションサービス。</p>
-                    <div class="tags">
-                        <span class="tag">コンテナ</span>
-                        <span class="tag">オーケストレーション</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Storage Services -->
-            <div class="service-card" data-category="storage">
-                <div class="card-header storage">
-                    <div class="icon">🗄️</div>
-                    <h3>S3</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Simple Storage Service</h4>
-                    <p>高い耐久性を持つオブジェクトストレージサービス。画像、動画、バックアップなど、あらゆるデータを保存できます。</p>
-                    <div class="tags">
-                        <span class="tag">オブジェクトストレージ</span>
-                        <span class="tag">耐久性99.999999999%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="storage">
-                <div class="card-header storage">
-                    <div class="icon">💾</div>
-                    <h3>EBS</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Elastic Block Store</h4>
-                    <p>EC2インスタンス用の永続的なブロックストレージ。高性能で低レイテンシーのストレージボリュームを提供。</p>
-                    <div class="tags">
-                        <span class="tag">ブロックストレージ</span>
-                        <span class="tag">高性能</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="storage">
-                <div class="card-header storage">
-                    <div class="icon">🧊</div>
-                    <h3>Glacier</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon S3 Glacier</h4>
-                    <p>長期アーカイブ用の低コストストレージサービス。アクセス頻度の低いデータの保存に最適。</p>
-                    <div class="tags">
-                        <span class="tag">アーカイブ</span>
-                        <span class="tag">低コスト</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Database Services -->
-            <div class="service-card" data-category="database">
-                <div class="card-header database">
-                    <div class="icon">🗃️</div>
-                    <h3>RDS</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Relational Database Service</h4>
-                    <p>マネージド型リレーショナルデータベースサービス。MySQL、PostgreSQL、Oracle、SQL Serverなどに対応。</p>
-                    <div class="tags">
-                        <span class="tag">リレーショナルDB</span>
-                        <span class="tag">マネージド</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="database">
-                <div class="card-header database">
-                    <div class="icon">⚡</div>
-                    <h3>DynamoDB</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon DynamoDB</h4>
-                    <p>フルマネージドNoSQLデータベースサービス。高速で予測可能なパフォーマンスと自動スケーリングを提供。</p>
-                    <div class="tags">
-                        <span class="tag">NoSQL</span>
-                        <span class="tag">高速</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="database">
-                <div class="card-header database">
-                    <div class="icon">🌟</div>
-                    <h3>Aurora</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon Aurora</h4>
-                    <p>MySQL・PostgreSQL互換のクラウド最適化されたリレーショナルデータベース。高性能と高可用性を実現。</p>
-                    <div class="tags">
-                        <span class="tag">高性能</span>
-                        <span class="tag">MySQL/PostgreSQL互換</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Networking Services -->
-            <div class="service-card" data-category="networking">
-                <div class="card-header networking">
-                    <div class="icon">🌐</div>
-                    <h3>VPC</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Virtual Private Cloud</h4>
-                    <p>AWS内に論理的に分離されたプライベートネットワークを構築。完全にコントロール可能な仮想ネットワーク環境。</p>
-                    <div class="tags">
-                        <span class="tag">プライベートネットワーク</span>
-                        <span class="tag">隔離</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="networking">
-                <div class="card-header networking">
-                    <div class="icon">🚀</div>
-                    <h3>CloudFront</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon CloudFront</h4>
-                    <p>高速コンテンツ配信ネットワーク（CDN）サービス。世界中のエッジロケーションからコンテンツを配信。</p>
-                    <div class="tags">
-                        <span class="tag">CDN</span>
-                        <span class="tag">グローバル配信</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="networking">
-                <div class="card-header networking">
-                    <div class="icon">🗺️</div>
-                    <h3>Route 53</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon Route 53</h4>
-                    <p>高可用性でスケーラブルなDNSウェブサービス。ドメイン名を管理し、ヘルスチェック機能も提供。</p>
-                    <div class="tags">
-                        <span class="tag">DNS</span>
-                        <span class="tag">高可用性</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Security Services -->
-            <div class="service-card" data-category="security">
-                <div class="card-header security">
-                    <div class="icon">🔐</div>
-                    <h3>IAM</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Identity and Access Management</h4>
-                    <p>AWSリソースへのアクセスを安全に管理。ユーザー、グループ、ロールを作成し、きめ細かいアクセス制御を実現。</p>
-                    <div class="tags">
-                        <span class="tag">アクセス管理</span>
-                        <span class="tag">認証・認可</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="security">
-                <div class="card-header security">
-                    <div class="icon">👤</div>
-                    <h3>Cognito</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon Cognito</h4>
-                    <p>ウェブ・モバイルアプリにユーザー認証、認可、管理機能を追加。ソーシャルログインにも対応。</p>
-                    <div class="tags">
-                        <span class="tag">ユーザー認証</span>
-                        <span class="tag">ソーシャルログイン</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="security">
-                <div class="card-header security">
-                    <div class="icon">🔑</div>
-                    <h3>KMS</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Key Management Service</h4>
-                    <p>暗号化キーの作成と管理を簡単に実行。データの暗号化と復号化を安全に行えます。</p>
-                    <div class="tags">
-                        <span class="tag">暗号化</span>
-                        <span class="tag">キー管理</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Analytics Services -->
-            <div class="service-card" data-category="analytics">
-                <div class="card-header analytics">
-                    <div class="icon">📊</div>
-                    <h3>CloudWatch</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon CloudWatch</h4>
-                    <p>AWSリソースとアプリケーションの監視サービス。メトリクス収集、ログ管理、アラーム設定が可能。</p>
-                    <div class="tags">
-                        <span class="tag">モニタリング</span>
-                        <span class="tag">ログ管理</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="analytics">
-                <div class="card-header analytics">
-                    <div class="icon">🔬</div>
-                    <h3>Athena</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon Athena</h4>
-                    <p>標準SQLを使用してS3内のデータを直接分析。サーバーレスのインタラクティブなクエリサービス。</p>
-                    <div class="tags">
-                        <span class="tag">SQLクエリ</span>
-                        <span class="tag">サーバーレス</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="analytics">
-                <div class="card-header analytics">
-                    <div class="icon">📈</div>
-                    <h3>QuickSight</h3>
-                </div>
-                <div class="card-body">
-                    <h4>Amazon QuickSight</h4>
-                    <p>高速なビジネスインテリジェンスサービス。データを可視化し、インサイトを簡単に発見できます。</p>
-                    <div class="tags">
-                        <span class="tag">BI</span>
-                        <span class="tag">データ可視化</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Developer Tools -->
-            <div class="service-card" data-category="developer">
-                <div class="card-header developer">
-                    <div class="icon">💻</div>
-                    <h3>CodeCommit</h3>
-                </div>
-                <div class="card-body">
-                    <h4>AWS CodeCommit</h4>
-                    <p>フルマネージドなプライベートGitリポジトリホスティングサービス。安全にコードを保存・管理できます。</p>
-                    <div class="tags">
-                        <span class="tag">Gitリポジトリ</span>
-                        <span class="tag">ソース管理</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="developer">
-                <div class="card-header developer">
-                    <div class="icon">🔨</div>
-                    <h3>CodeBuild</h3>
-                </div>
-                <div class="card-body">
-                    <h4>AWS CodeBuild</h4>
-                    <p>フルマネージドなビルドサービス。ソースコードをコンパイルし、テストを実行し、デプロイ可能なパッケージを作成。</p>
-                    <div class="tags">
-                        <span class="tag">CI/CD</span>
-                        <span class="tag">ビルド自動化</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card" data-category="developer">
-                <div class="card-header developer">
-                    <div class="icon">🚢</div>
-                    <h3>CodeDeploy</h3>
-                </div>
-                <div class="card-body">
-                    <h4>AWS CodeDeploy</h4>
-                    <p>アプリケーションのデプロイを自動化するサービス。EC2、Lambda、オンプレミスサーバーに対応。</p>
-                    <div class="tags">
-                        <span class="tag">デプロイ自動化</span>
-                        <span class="tag">CI/CD</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Modal for detailed information -->
-    <div id="serviceModal" class="modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-header">
-                <div class="modal-icon"></div>
-                <h2 class="modal-title"></h2>
-            </div>
-            <div class="modal-body">
-                <h3 class="modal-full-name"></h3>
-                <p class="modal-description"></p>
-
-                <div class="modal-section">
-                    <h4>💡 主な機能</h4>
-                    <ul class="modal-features"></ul>
-                </div>
-
-                <div class="modal-section">
-                    <h4>🎯 ユースケース</h4>
-                    <ul class="modal-use-cases"></ul>
-                </div>
-
-                <div class="modal-section">
-                    <h4>💰 料金モデル</h4>
-                    <p class="modal-pricing"></p>
-                </div>
-
-                <div class="modal-section">
-                    <h4>🔗 関連サービス</h4>
-                    <div class="modal-related"></div>
-                </div>
-            </div>
-        </div>
+        <footer>
+            <p>すべてのアプリケーションはデータベース不要で、ブラウザ上で完結します。</p>
+        </footer>
     </div>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 AWS Services Visual Guide | 学習用デモサイト</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
