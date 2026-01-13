@@ -35,6 +35,17 @@
             <button id="new-game" class="btn">新しいゲーム</button>
         </div>
 
+        <div class="mode-toggle">
+            <button id="mode-reveal" class="mode-btn active">
+                <span class="mode-icon">👆</span>
+                <span class="mode-text">開く</span>
+            </button>
+            <button id="mode-flag" class="mode-btn">
+                <span class="mode-icon">🚩</span>
+                <span class="mode-text">フラグ</span>
+            </button>
+        </div>
+
         <div id="game-status" class="game-status"></div>
 
         <div id="game-board" class="game-board"></div>
@@ -42,8 +53,8 @@
         <div class="instructions">
             <h3>遊び方</h3>
             <ul>
-                <li><strong>左クリック:</strong> セルを開く</li>
-                <li><strong>右クリック:</strong> フラグを立てる/外す</li>
+                <li><strong>PC:</strong> 左クリックで開く、右クリックでフラグ</li>
+                <li><strong>スマホ:</strong> 上のボタンでモードを切り替えてタップ</li>
                 <li><strong>目的:</strong> 地雷以外のすべてのセルを開く</li>
                 <li>数字は周囲8マスの地雷の数を表します</li>
             </ul>

@@ -7,6 +7,7 @@ class Minesweeper {
         };
 
         this.currentDifficulty = 'easy';
+        this.currentMode = 'reveal';
         this.board = [];
         this.revealed = [];
         this.flagged = [];
@@ -29,6 +30,8 @@ class Minesweeper {
         this.statusElement = document.getElementById('game-status');
         this.difficultySelect = document.getElementById('difficulty');
         this.newGameButton = document.getElementById('new-game');
+        this.modeRevealButton = document.getElementById('mode-reveal');
+        this.modeFlagButton = document.getElementById('mode-flag');
     }
 
     setupEventListeners() {
@@ -37,6 +40,21 @@ class Minesweeper {
             this.currentDifficulty = e.target.value;
             this.initGame();
         });
+
+        this.modeRevealButton.addEventListener('click', () => this.setMode('reveal'));
+        this.modeFlagButton.addEventListener('click', () => this.setMode('flag'));
+    }
+
+    setMode(mode) {
+        this.currentMode = mode;
+
+        if (mode === 'reveal') {
+            this.modeRevealButton.classList.add('active');
+            this.modeFlagButton.classList.remove('active');
+        } else {
+            this.modeRevealButton.classList.remove('active');
+            this.modeFlagButton.classList.add('active');
+        }
     }
 
     initGame() {
@@ -57,6 +75,7 @@ class Minesweeper {
         this.revealed = Array(this.rows).fill(null).map(() => Array(this.cols).fill(false));
         this.flagged = Array(this.rows).fill(null).map(() => Array(this.cols).fill(false));
 
+        this.setMode('reveal');
         this.updateDisplay();
         this.renderBoard();
         this.stopTimer();
@@ -107,7 +126,7 @@ class Minesweeper {
                 cell.dataset.row = row;
                 cell.dataset.col = col;
 
-                cell.addEventListener('click', () => this.handleLeftClick(row, col));
+                cell.addEventListener('click', () => this.handleCellClick(row, col));
                 cell.addEventListener('contextmenu', (e) => {
                     e.preventDefault();
                     this.handleRightClick(row, col);
@@ -116,6 +135,14 @@ class Minesweeper {
                 this.updateCell(cell, row, col);
                 this.boardElement.appendChild(cell);
             }
+        }
+    }
+
+    handleCellClick(row, col) {
+        if (this.currentMode === 'reveal') {
+            this.handleLeftClick(row, col);
+        } else {
+            this.handleRightClick(row, col);
         }
     }
 
