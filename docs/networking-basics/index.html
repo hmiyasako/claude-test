@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ネットワーク基礎知識 ビジュアルガイド</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🌐 ネットワーク基礎知識 ビジュアルガイド</h1>
+            <p class="subtitle">ネットワークの基礎概念をカテゴリー別に理解する</p>
+        </div>
+    </header>
+
+    <nav class="filter-nav">
+        <div class="container">
+            <button type="button" class="filter-btn active" data-category="all">すべて</button>
+            <button type="button" class="filter-btn" data-category="basics">基礎概念</button>
+            <button type="button" class="filter-btn" data-category="protocol">プロトコル</button>
+            <button type="button" class="filter-btn" data-category="addressing">アドレッシング</button>
+            <button type="button" class="filter-btn" data-category="device">ネットワーク機器</button>
+            <button type="button" class="filter-btn" data-category="service">サービス</button>
+            <button type="button" class="filter-btn" data-category="security">セキュリティ</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="services-grid" id="servicesGrid">
+            <!-- 基礎概念 -->
+            <div class="service-card" data-category="basics">
+                <div class="card-header basics">
+                    <div class="icon">📚</div>
+                    <h3>OSI参照モデル</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Open Systems Interconnection</h4>
+                    <p>ネットワーク通信を7つの層に分けて標準化した概念モデル。異なるシステム間の通信を可能にします。</p>
+                    <div class="tags">
+                        <span class="tag">7層モデル</span>
+                        <span class="tag">標準化</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="basics">
+                <div class="card-header basics">
+                    <div class="icon">🔗</div>
+                    <h3>TCP/IPモデル</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Transmission Control Protocol/Internet Protocol</h4>
+                    <p>インターネットで実際に使用されている4層のプロトコルスタック。現代のネットワーク通信の基盤です。</p>
+                    <div class="tags">
+                        <span class="tag">4層モデル</span>
+                        <span class="tag">インターネット標準</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="basics">
+                <div class="card-header basics">
+                    <div class="icon">📡</div>
+                    <h3>パケット通信</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Packet Switching</h4>
+                    <p>データを小さなパケットに分割して送信する通信方式。効率的なネットワーク利用を実現します。</p>
+                    <div class="tags">
+                        <span class="tag">データ分割</span>
+                        <span class="tag">効率的通信</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プロトコル -->
+            <div class="service-card" data-category="protocol">
+                <div class="card-header protocol">
+                    <div class="icon">🔄</div>
+                    <h3>TCP</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Transmission Control Protocol</h4>
+                    <p>信頼性の高いコネクション型プロトコル。データの到着順序と完全性を保証します。</p>
+                    <div class="tags">
+                        <span class="tag">信頼性</span>
+                        <span class="tag">コネクション型</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="protocol">
+                <div class="card-header protocol">
+                    <div class="icon">⚡</div>
+                    <h3>UDP</h3>
+                </div>
+                <div class="card-body">
+                    <h4>User Datagram Protocol</h4>
+                    <p>高速なコネクションレス型プロトコル。リアルタイム通信やストリーミングに最適です。</p>
+                    <div class="tags">
+                        <span class="tag">高速</span>
+                        <span class="tag">コネクションレス</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="protocol">
+                <div class="card-header protocol">
+                    <div class="icon">🌍</div>
+                    <h3>HTTP/HTTPS</h3>
+                </div>
+                <div class="card-body">
+                    <h4>HyperText Transfer Protocol (Secure)</h4>
+                    <p>Webページの転送に使用されるプロトコル。HTTPSはSSL/TLSによる暗号化を追加。</p>
+                    <div class="tags">
+                        <span class="tag">Web通信</span>
+                        <span class="tag">暗号化</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="protocol">
+                <div class="card-header protocol">
+                    <div class="icon">📧</div>
+                    <h3>SMTP/POP/IMAP</h3>
+                </div>
+                <div class="card-body">
+                    <h4>メールプロトコル</h4>
+                    <p>電子メールの送受信に使用されるプロトコル群。SMTPは送信、POP/IMAPは受信に使用。</p>
+                    <div class="tags">
+                        <span class="tag">メール送信</span>
+                        <span class="tag">メール受信</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アドレッシング -->
+            <div class="service-card" data-category="addressing">
+                <div class="card-header addressing">
+                    <div class="icon">🔢</div>
+                    <h3>IPv4</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Internet Protocol version 4</h4>
+                    <p>32ビットのIPアドレスを使用。約43億個のアドレスを提供しますが、枯渇が問題となっています。</p>
+                    <div class="tags">
+                        <span class="tag">32ビット</span>
+                        <span class="tag">現行標準</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="addressing">
+                <div class="card-header addressing">
+                    <div class="icon">🔠</div>
+                    <h3>IPv6</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Internet Protocol version 6</h4>
+                    <p>128ビットのIPアドレスを使用。事実上無限のアドレス空間を提供する次世代プロトコル。</p>
+                    <div class="tags">
+                        <span class="tag">128ビット</span>
+                        <span class="tag">次世代</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="addressing">
+                <div class="card-header addressing">
+                    <div class="icon">🎭</div>
+                    <h3>サブネット</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Subnet / CIDR</h4>
+                    <p>大きなネットワークを小さなネットワークに分割する技術。効率的なIPアドレス管理を実現。</p>
+                    <div class="tags">
+                        <span class="tag">ネットワーク分割</span>
+                        <span class="tag">CIDR表記</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="addressing">
+                <div class="card-header addressing">
+                    <div class="icon">🏠</div>
+                    <h3>MACアドレス</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Media Access Control Address</h4>
+                    <p>ネットワーク機器に割り当てられた一意の物理アドレス。48ビットで表現されます。</p>
+                    <div class="tags">
+                        <span class="tag">物理アドレス</span>
+                        <span class="tag">一意識別子</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ネットワーク機器 -->
+            <div class="service-card" data-category="device">
+                <div class="card-header device">
+                    <div class="icon">🔀</div>
+                    <h3>ルーター</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Router</h4>
+                    <p>異なるネットワーク間でパケットを転送するL3デバイス。最適な経路を選択してデータを届けます。</p>
+                    <div class="tags">
+                        <span class="tag">L3デバイス</span>
+                        <span class="tag">経路制御</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="device">
+                <div class="card-header device">
+                    <div class="icon">🔌</div>
+                    <h3>スイッチ</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Switch</h4>
+                    <p>同一ネットワーク内でフレームを転送するL2デバイス。MACアドレスを学習して効率的に通信。</p>
+                    <div class="tags">
+                        <span class="tag">L2デバイス</span>
+                        <span class="tag">フレーム転送</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="device">
+                <div class="card-header device">
+                    <div class="icon">📶</div>
+                    <h3>アクセスポイント</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Wireless Access Point</h4>
+                    <p>無線LANの基地局として機能するデバイス。有線ネットワークと無線デバイスを接続します。</p>
+                    <div class="tags">
+                        <span class="tag">無線LAN</span>
+                        <span class="tag">Wi-Fi</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="device">
+                <div class="card-header device">
+                    <div class="icon">⚖️</div>
+                    <h3>ロードバランサー</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Load Balancer</h4>
+                    <p>複数のサーバーにトラフィックを分散させるデバイス。高可用性とスケーラビリティを実現。</p>
+                    <div class="tags">
+                        <span class="tag">負荷分散</span>
+                        <span class="tag">高可用性</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- サービス -->
+            <div class="service-card" data-category="service">
+                <div class="card-header service">
+                    <div class="icon">📖</div>
+                    <h3>DNS</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Domain Name System</h4>
+                    <p>ドメイン名をIPアドレスに変換するシステム。インターネットの電話帳のような役割を果たします。</p>
+                    <div class="tags">
+                        <span class="tag">名前解決</span>
+                        <span class="tag">ドメイン管理</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="service">
+                <div class="card-header service">
+                    <div class="icon">🎫</div>
+                    <h3>DHCP</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Dynamic Host Configuration Protocol</h4>
+                    <p>ネットワーク設定を自動的に割り当てるプロトコル。IPアドレス、サブネット、ゲートウェイなどを配布。</p>
+                    <div class="tags">
+                        <span class="tag">自動設定</span>
+                        <span class="tag">アドレス配布</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="service">
+                <div class="card-header service">
+                    <div class="icon">🔄</div>
+                    <h3>NAT</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Network Address Translation</h4>
+                    <p>プライベートIPアドレスをグローバルIPアドレスに変換。IPv4アドレスの節約に貢献します。</p>
+                    <div class="tags">
+                        <span class="tag">アドレス変換</span>
+                        <span class="tag">IPv4節約</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="service">
+                <div class="card-header service">
+                    <div class="icon">🖥️</div>
+                    <h3>プロキシ</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Proxy Server</h4>
+                    <p>クライアントとサーバーの間に立つ中継サーバー。キャッシュ、フィルタリング、匿名化などを提供。</p>
+                    <div class="tags">
+                        <span class="tag">中継サーバー</span>
+                        <span class="tag">キャッシュ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- セキュリティ -->
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🛡️</div>
+                    <h3>ファイアウォール</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Firewall</h4>
+                    <p>ネットワークトラフィックを監視・制御するセキュリティシステム。不正アクセスからネットワークを保護。</p>
+                    <div class="tags">
+                        <span class="tag">アクセス制御</span>
+                        <span class="tag">防御</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🔒</div>
+                    <h3>VPN</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Virtual Private Network</h4>
+                    <p>暗号化されたトンネルを通じて安全な通信を実現。リモートアクセスや拠点間接続に使用。</p>
+                    <div class="tags">
+                        <span class="tag">暗号化トンネル</span>
+                        <span class="tag">リモートアクセス</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🔐</div>
+                    <h3>SSL/TLS</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Secure Sockets Layer / Transport Layer Security</h4>
+                    <p>通信を暗号化するプロトコル。Webサイトのhttps、メール、VPNなどで広く使用されています。</p>
+                    <div class="tags">
+                        <span class="tag">暗号化</span>
+                        <span class="tag">証明書</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🕵️</div>
+                    <h3>IDS/IPS</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Intrusion Detection/Prevention System</h4>
+                    <p>ネットワーク上の不正活動を検知・防止するシステム。サイバー攻撃からの保護を提供。</p>
+                    <div class="tags">
+                        <span class="tag">侵入検知</span>
+                        <span class="tag">侵入防止</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for detailed information -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button type="button" class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"></div>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-full-name"></h3>
+                <p class="modal-description"></p>
+
+                <div class="modal-section">
+                    <h4>💡 主な特徴</h4>
+                    <ul class="modal-features"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h4>🎯 ユースケース</h4>
+                    <ul class="modal-use-cases"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h4>📝 覚えておくべきポイント</h4>
+                    <p class="modal-tips"></p>
+                </div>
+
+                <div class="modal-section">
+                    <h4>🔗 関連トピック</h4>
+                    <div class="modal-related"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ネットワーク基礎知識 ビジュアルガイド | 学習用デモサイト</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
