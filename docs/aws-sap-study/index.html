@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS SAP 試験対策ガイド</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AWS SAP 試験対策ガイド</h1>
+            <p class="subtitle">AWS Certified Solutions Architect - Professional に合格するための知識と考え方</p>
+        </div>
+    </header>
+
+    <nav class="filter-nav">
+        <div class="container">
+            <button type="button" class="filter-btn active" data-category="all">すべて</button>
+            <button type="button" class="filter-btn" data-category="design">設計原則</button>
+            <button type="button" class="filter-btn" data-category="organization">組織設計</button>
+            <button type="button" class="filter-btn" data-category="network">ネットワーク</button>
+            <button type="button" class="filter-btn" data-category="migration">移行戦略</button>
+            <button type="button" class="filter-btn" data-category="security">セキュリティ</button>
+            <button type="button" class="filter-btn" data-category="cost">コスト最適化</button>
+            <button type="button" class="filter-btn" data-category="resilience">回復力</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="services-grid" id="servicesGrid">
+            <!-- 設計原則 -->
+            <div class="service-card" data-category="design">
+                <div class="card-header design">
+                    <div class="icon">🏗️</div>
+                    <h3>Well-Architected Framework</h3>
+                </div>
+                <div class="card-body">
+                    <h4>AWS設計のベストプラクティス</h4>
+                    <p>AWSの設計原則を体系化した6つの柱。SAP試験の全ての問題はこのフレームワークに基づいて設計されています。</p>
+                    <div class="tags">
+                        <span class="tag">6つの柱</span>
+                        <span class="tag">設計原則</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="design">
+                <div class="card-header design">
+                    <div class="icon">🔄</div>
+                    <h3>疎結合アーキテクチャ</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Loose Coupling</h4>
+                    <p>コンポーネント間の依存関係を最小限にし、障害の影響範囲を限定。SQS、SNS、EventBridgeを活用した非同期設計。</p>
+                    <div class="tags">
+                        <span class="tag">非同期処理</span>
+                        <span class="tag">障害分離</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="design">
+                <div class="card-header design">
+                    <div class="icon">📊</div>
+                    <h3>スケーラビリティ設計</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Scalability Patterns</h4>
+                    <p>水平スケーリングを優先。ステートレス設計、Auto Scaling、ElastiCache、CloudFrontでスケーラブルなシステムを構築。</p>
+                    <div class="tags">
+                        <span class="tag">水平スケール</span>
+                        <span class="tag">ステートレス</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="design">
+                <div class="card-header design">
+                    <div class="icon">🎯</div>
+                    <h3>サーバーレスファースト</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Serverless First</h4>
+                    <p>運用負荷を最小化するためにLambda、API Gateway、DynamoDB、Step Functionsなどマネージドサービスを優先的に選択。</p>
+                    <div class="tags">
+                        <span class="tag">運用負荷軽減</span>
+                        <span class="tag">従量課金</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 組織設計 -->
+            <div class="service-card" data-category="organization">
+                <div class="card-header organization">
+                    <div class="icon">🏢</div>
+                    <h3>AWS Organizations</h3>
+                </div>
+                <div class="card-body">
+                    <h4>マルチアカウント管理</h4>
+                    <p>複数AWSアカウントを一元管理。OU構造、SCP（Service Control Policy）によるガバナンス、一括請求でコスト管理。</p>
+                    <div class="tags">
+                        <span class="tag">OU構造</span>
+                        <span class="tag">SCP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="organization">
+                <div class="card-header organization">
+                    <div class="icon">🗼</div>
+                    <h3>Control Tower</h3>
+                </div>
+                <div class="card-body">
+                    <h4>ランディングゾーン構築</h4>
+                    <p>マルチアカウント環境のベストプラクティスを自動構築。ガードレール（予防的・検出的）でコンプライアンスを強制。</p>
+                    <div class="tags">
+                        <span class="tag">ガードレール</span>
+                        <span class="tag">自動プロビジョニング</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="organization">
+                <div class="card-header organization">
+                    <div class="icon">🔐</div>
+                    <h3>Service Control Policy</h3>
+                </div>
+                <div class="card-body">
+                    <h4>SCPによるアクセス制御</h4>
+                    <p>Organizations全体でIAMポリシーの上限を設定。特定リージョン禁止、特定サービス禁止などの組織レベル制御。</p>
+                    <div class="tags">
+                        <span class="tag">境界設定</span>
+                        <span class="tag">ガバナンス</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="organization">
+                <div class="card-header organization">
+                    <div class="icon">🏠</div>
+                    <h3>マルチアカウント戦略</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Account Vending Machine</h4>
+                    <p>環境別（dev/stg/prod）、ワークロード別、チーム別のアカウント分離。セキュリティ境界の明確化とブラスト半径の縮小。</p>
+                    <div class="tags">
+                        <span class="tag">環境分離</span>
+                        <span class="tag">ブラスト半径</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="organization">
+                <div class="card-header organization">
+                    <div class="icon">🔗</div>
+                    <h3>AWS RAM</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Resource Access Manager</h4>
+                    <p>アカウント間でリソースを共有。Transit Gateway、サブネット、License Manager設定などを組織内で効率的に共有。</p>
+                    <div class="tags">
+                        <span class="tag">リソース共有</span>
+                        <span class="tag">コスト削減</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ネットワーク -->
+            <div class="service-card" data-category="network">
+                <div class="card-header network">
+                    <div class="icon">🌐</div>
+                    <h3>VPC設計パターン</h3>
+                </div>
+                <div class="card-body">
+                    <h4>マルチティア・マルチAZ</h4>
+                    <p>パブリック/プライベートサブネット分離、3AZ構成、NATゲートウェイの冗長化。CIDR設計でIP重複を回避。</p>
+                    <div class="tags">
+                        <span class="tag">サブネット設計</span>
+                        <span class="tag">CIDR計画</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="network">
+                <div class="card-header network">
+                    <div class="icon">🔀</div>
+                    <h3>Transit Gateway</h3>
+                </div>
+                <div class="card-body">
+                    <h4>ハブ＆スポーク接続</h4>
+                    <p>複数VPCやオンプレミスをハブで接続。ルートテーブルでトラフィック制御、マルチリージョンピアリング対応。</p>
+                    <div class="tags">
+                        <span class="tag">ハブ＆スポーク</span>
+                        <span class="tag">ルート伝播</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="network">
+                <div class="card-header network">
+                    <div class="icon">🔌</div>
+                    <h3>Direct Connect</h3>
+                </div>
+                <div class="card-body">
+                    <h4>専用線接続</h4>
+                    <p>オンプレミスとAWSを専用線で接続。LAG構成で冗長化、パブリック/プライベートVIF、Transit VIFの使い分け。</p>
+                    <div class="tags">
+                        <span class="tag">専用線</span>
+                        <span class="tag">低レイテンシー</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="network">
+                <div class="card-header network">
+                    <div class="icon">🔒</div>
+                    <h3>PrivateLink</h3>
+                </div>
+                <div class="card-body">
+                    <h4>プライベート接続</h4>
+                    <p>VPCエンドポイントでAWSサービスにプライベートアクセス。インターフェース型とゲートウェイ型の使い分け。</p>
+                    <div class="tags">
+                        <span class="tag">VPCエンドポイント</span>
+                        <span class="tag">インターネット不要</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="network">
+                <div class="card-header network">
+                    <div class="icon">🛡️</div>
+                    <h3>ネットワークセキュリティ</h3>
+                </div>
+                <div class="card-body">
+                    <h4>多層防御</h4>
+                    <p>Security Group（ステートフル）、NACL（ステートレス）、WAF、Shield、Network Firewallの組み合わせ。</p>
+                    <div class="tags">
+                        <span class="tag">多層防御</span>
+                        <span class="tag">DDoS対策</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="network">
+                <div class="card-header network">
+                    <div class="icon">🌍</div>
+                    <h3>Route 53</h3>
+                </div>
+                <div class="card-body">
+                    <h4>DNSとトラフィック管理</h4>
+                    <p>ルーティングポリシー（シンプル、加重、レイテンシー、フェイルオーバー、位置情報）でグローバルトラフィック制御。</p>
+                    <div class="tags">
+                        <span class="tag">DNS</span>
+                        <span class="tag">ヘルスチェック</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 移行戦略 -->
+            <div class="service-card" data-category="migration">
+                <div class="card-header migration">
+                    <div class="icon">🚀</div>
+                    <h3>6つのR（移行戦略）</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Migration Strategies</h4>
+                    <p>Rehost、Replatform、Refactor、Repurchase、Retain、Retire。ワークロードに応じた最適な戦略を選択。</p>
+                    <div class="tags">
+                        <span class="tag">リフト＆シフト</span>
+                        <span class="tag">モダナイゼーション</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="migration">
+                <div class="card-header migration">
+                    <div class="icon">📦</div>
+                    <h3>Migration Hub</h3>
+                </div>
+                <div class="card-body">
+                    <h4>移行の一元管理</h4>
+                    <p>移行プロジェクトの進捗を一元管理。Application Discovery Service、Server Migration Service、DMSと連携。</p>
+                    <div class="tags">
+                        <span class="tag">進捗管理</span>
+                        <span class="tag">ダッシュボード</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="migration">
+                <div class="card-header migration">
+                    <div class="icon">🗄️</div>
+                    <h3>Database Migration Service</h3>
+                </div>
+                <div class="card-body">
+                    <h4>DBの移行・レプリケーション</h4>
+                    <p>同種・異種DB間の移行。SCT（Schema Conversion Tool）でスキーマ変換、CDC（継続的変更キャプチャ）対応。</p>
+                    <div class="tags">
+                        <span class="tag">異種DB変換</span>
+                        <span class="tag">CDC</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="migration">
+                <div class="card-header migration">
+                    <div class="icon">❄️</div>
+                    <h3>Snow Family</h3>
+                </div>
+                <div class="card-body">
+                    <h4>大容量データ転送</h4>
+                    <p>Snowcone（8TB）、Snowball Edge（80TB）、Snowmobile（100PB）。帯域制限やセキュリティ要件に対応。</p>
+                    <div class="tags">
+                        <span class="tag">オフライン転送</span>
+                        <span class="tag">エッジコンピューティング</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="migration">
+                <div class="card-header migration">
+                    <div class="icon">🔄</div>
+                    <h3>Application Migration Service</h3>
+                </div>
+                <div class="card-body">
+                    <h4>MGN（リフト＆シフト）</h4>
+                    <p>サーバーのブロックレベルレプリケーション。カットオーバーまで継続的同期、最小ダウンタイムで移行。</p>
+                    <div class="tags">
+                        <span class="tag">継続的レプリケーション</span>
+                        <span class="tag">最小ダウンタイム</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- セキュリティ -->
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">👤</div>
+                    <h3>IAM設計</h3>
+                </div>
+                <div class="card-body">
+                    <h4>最小権限の原則</h4>
+                    <p>ロールベースアクセス、IAM Identity Center（旧SSO）でフェデレーション、Permission Boundaryで権限上限設定。</p>
+                    <div class="tags">
+                        <span class="tag">最小権限</span>
+                        <span class="tag">フェデレーション</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🔑</div>
+                    <h3>KMS / CloudHSM</h3>
+                </div>
+                <div class="card-body">
+                    <h4>暗号化キー管理</h4>
+                    <p>KMSでマネージドキー管理、CloudHSMで専用ハードウェア。キーポリシー、グラント、自動ローテーション設定。</p>
+                    <div class="tags">
+                        <span class="tag">CMK</span>
+                        <span class="tag">キーローテーション</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🔍</div>
+                    <h3>Security Hub</h3>
+                </div>
+                <div class="card-body">
+                    <h4>セキュリティ状況の一元管理</h4>
+                    <p>GuardDuty、Inspector、Macie、Firewall Managerからの検出結果を集約。AWS基礎セキュリティベストプラクティス適用。</p>
+                    <div class="tags">
+                        <span class="tag">統合ダッシュボード</span>
+                        <span class="tag">コンプライアンス</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🕵️</div>
+                    <h3>GuardDuty</h3>
+                </div>
+                <div class="card-body">
+                    <h4>脅威検出</h4>
+                    <p>VPC Flow Logs、CloudTrail、DNS Logsを分析して脅威を検出。機械学習ベースの異常検知、Organizations統合。</p>
+                    <div class="tags">
+                        <span class="tag">脅威検出</span>
+                        <span class="tag">ML分析</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">🔏</div>
+                    <h3>Secrets Manager</h3>
+                </div>
+                <div class="card-body">
+                    <h4>シークレット管理</h4>
+                    <p>DBパスワード、APIキーの安全な保存と自動ローテーション。Lambda連携でカスタムローテーション、クロスアカウントアクセス。</p>
+                    <div class="tags">
+                        <span class="tag">自動ローテーション</span>
+                        <span class="tag">監査</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="security">
+                <div class="card-header security">
+                    <div class="icon">📋</div>
+                    <h3>AWS Config</h3>
+                </div>
+                <div class="card-body">
+                    <h4>設定変更の追跡</h4>
+                    <p>リソース設定の変更履歴を記録。Configルールでコンプライアンスチェック、自動修復アクション設定。</p>
+                    <div class="tags">
+                        <span class="tag">構成管理</span>
+                        <span class="tag">自動修復</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- コスト最適化 -->
+            <div class="service-card" data-category="cost">
+                <div class="card-header cost">
+                    <div class="icon">💰</div>
+                    <h3>Reserved Instances</h3>
+                </div>
+                <div class="card-body">
+                    <h4>予約購入による割引</h4>
+                    <p>1年/3年のコミットメントで最大72%割引。Standard RIとConvertible RI、容量予約の有無を選択。</p>
+                    <div class="tags">
+                        <span class="tag">長期コミット</span>
+                        <span class="tag">最大72%割引</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="cost">
+                <div class="card-header cost">
+                    <div class="icon">💵</div>
+                    <h3>Savings Plans</h3>
+                </div>
+                <div class="card-body">
+                    <h4>柔軟なコミットメント</h4>
+                    <p>1時間あたりの使用量をコミット。Compute Savings Plans（EC2、Fargate、Lambda対応）とEC2 Instance Savings Plans。</p>
+                    <div class="tags">
+                        <span class="tag">柔軟性</span>
+                        <span class="tag">サービス横断</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="cost">
+                <div class="card-header cost">
+                    <div class="icon">🎯</div>
+                    <h3>Spot Instances</h3>
+                </div>
+                <div class="card-body">
+                    <h4>最大90%割引</h4>
+                    <p>余剰キャパシティを利用。中断に強いワークロード向け。Spot Fleet、EC2 Auto Scaling混合インスタンスポリシー。</p>
+                    <div class="tags">
+                        <span class="tag">バッチ処理</span>
+                        <span class="tag">中断許容</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="cost">
+                <div class="card-header cost">
+                    <div class="icon">📈</div>
+                    <h3>Cost Explorer</h3>
+                </div>
+                <div class="card-body">
+                    <h4>コスト分析・予測</h4>
+                    <p>コストと使用量の可視化、予測、RI/Savings Plans推奨事項。コスト配分タグで部門別コスト追跡。</p>
+                    <div class="tags">
+                        <span class="tag">可視化</span>
+                        <span class="tag">予測</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="cost">
+                <div class="card-header cost">
+                    <div class="icon">⚠️</div>
+                    <h3>Budgets</h3>
+                </div>
+                <div class="card-body">
+                    <h4>予算アラート</h4>
+                    <p>コスト、使用量、RI/Savings Plans利用率の予算設定。SNS通知、自動アクション（EC2/RDS停止）でコスト超過防止。</p>
+                    <div class="tags">
+                        <span class="tag">アラート</span>
+                        <span class="tag">自動アクション</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="cost">
+                <div class="card-header cost">
+                    <div class="icon">🏷️</div>
+                    <h3>タグ戦略</h3>
+                </div>
+                <div class="card-body">
+                    <h4>コスト配分とガバナンス</h4>
+                    <p>必須タグ（Environment、Owner、CostCenter）の強制。Tag Policies、AWS ConfigでタグコンプライアンスをチェックV</p>
+                    <div class="tags">
+                        <span class="tag">コスト配分</span>
+                        <span class="tag">リソース管理</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 回復力 -->
+            <div class="service-card" data-category="resilience">
+                <div class="card-header resilience">
+                    <div class="icon">🔄</div>
+                    <h3>DR戦略</h3>
+                </div>
+                <div class="card-body">
+                    <h4>ディザスタリカバリパターン</h4>
+                    <p>Backup & Restore、Pilot Light、Warm Standby、Multi-Site Active-Active。RPO/RTOに応じた戦略選択。</p>
+                    <div class="tags">
+                        <span class="tag">RPO/RTO</span>
+                        <span class="tag">4つの戦略</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="resilience">
+                <div class="card-header resilience">
+                    <div class="icon">🌏</div>
+                    <h3>マルチリージョン設計</h3>
+                </div>
+                <div class="card-body">
+                    <h4>グローバルレジリエンス</h4>
+                    <p>Aurora Global Database、DynamoDB Global Tables、S3 Cross-Region Replication、Global Acceleratorの活用。</p>
+                    <div class="tags">
+                        <span class="tag">クロスリージョン</span>
+                        <span class="tag">データ同期</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="resilience">
+                <div class="card-header resilience">
+                    <div class="icon">📊</div>
+                    <h3>Auto Scaling</h3>
+                </div>
+                <div class="card-body">
+                    <h4>自動スケーリング</h4>
+                    <p>ターゲット追跡、ステップスケーリング、スケジュールスケーリング。予測スケーリングでプロアクティブに対応。</p>
+                    <div class="tags">
+                        <span class="tag">自動化</span>
+                        <span class="tag">予測スケーリング</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="resilience">
+                <div class="card-header resilience">
+                    <div class="icon">💾</div>
+                    <h3>AWS Backup</h3>
+                </div>
+                <div class="card-body">
+                    <h4>バックアップの一元管理</h4>
+                    <p>EC2、EBS、RDS、DynamoDB、EFS、FSxのバックアップを一元管理。クロスリージョン・クロスアカウントコピー。</p>
+                    <div class="tags">
+                        <span class="tag">一元管理</span>
+                        <span class="tag">ポリシーベース</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="resilience">
+                <div class="card-header resilience">
+                    <div class="icon">🔧</div>
+                    <h3>Resilience Hub</h3>
+                </div>
+                <div class="card-body">
+                    <h4>レジリエンス評価</h4>
+                    <p>アプリケーションのレジリエンス目標（RTO/RPO）を定義し、現在のアーキテクチャを評価。改善推奨事項を提示。</p>
+                    <div class="tags">
+                        <span class="tag">評価</span>
+                        <span class="tag">推奨事項</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" data-category="resilience">
+                <div class="card-header resilience">
+                    <div class="icon">🧪</div>
+                    <h3>Fault Injection Simulator</h3>
+                </div>
+                <div class="card-body">
+                    <h4>カオスエンジニアリング</h4>
+                    <p>制御された障害を注入してシステムの回復力をテスト。EC2停止、レイテンシー追加、AZ障害シミュレーション。</p>
+                    <div class="tags">
+                        <span class="tag">カオステスト</span>
+                        <span class="tag">障害注入</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 試験対策 -->
+            <div class="service-card" data-category="design">
+                <div class="card-header design">
+                    <div class="icon">💡</div>
+                    <h3>SAP試験の考え方</h3>
+                </div>
+                <div class="card-body">
+                    <h4>問題を解く際のマインドセット</h4>
+                    <p>「最もコスト効率が良い」「運用負荷が最小」「最もセキュア」など要件を正確に把握。AWSマネージドサービス優先。</p>
+                    <div class="tags">
+                        <span class="tag">要件把握</span>
+                        <span class="tag">トレードオフ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for detailed information -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button type="button" class="modal-close">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon"></div>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-full-name"></h3>
+                <p class="modal-description"></p>
+
+                <div class="modal-section">
+                    <h4>💡 重要ポイント</h4>
+                    <ul class="modal-features"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h4>🎯 試験での出題パターン</h4>
+                    <ul class="modal-use-cases"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h4>📝 覚えておくべきこと</h4>
+                    <p class="modal-tips"></p>
+                </div>
+
+                <div class="modal-section">
+                    <h4>🔗 関連トピック</h4>
+                    <div class="modal-related"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AWS SAP 試験対策ガイド | 学習用デモサイト</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="../common/script.js"></script>
+</body>
+</html>
